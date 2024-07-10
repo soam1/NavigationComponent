@@ -2,12 +2,9 @@
 plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.jetbrains.kotlin.android) apply false
+
 }
 buildscript {
-    repositories {
-        mavenCentral()
-    }
-
     dependencies {
         classpath(libs.androidx.navigation.safe.args.gradle.plugin)
     }
