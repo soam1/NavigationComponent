@@ -14,7 +14,7 @@ import com.example.navigationcomponent.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
-//    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var drawerLayout: DrawerLayout
     private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,15 +23,17 @@ class MainActivity : AppCompatActivity() {
 //        setContentView(R.layout.activity_main)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setSupportActionBar(binding.toolbar)
 
-
-//        drawerLayout = binding.drawerLayout
+        drawerLayout = binding.drawerLayout
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as androidx.navigation.fragment.NavHostFragment
         navController = navHostFragment.findNavController()
-//        appBarConfiguration = AppBarConfiguration(navController.graph, drawerLayout)
-//        setupActionBarWithNavController(navController, appBarConfiguration)
         binding.navigationView.setupWithNavController(navController)
+
+
+        appBarConfiguration = AppBarConfiguration(navController.graph, drawerLayout)
+        setupActionBarWithNavController(navController, appBarConfiguration)
 
 //        Safe Args is a Gradle plugin for the Android Navigation Component that helps you pass data between destinations with type safety. It generates object and builder classes that allow you to add data to a bundle and retrieve it in a type-safe manner. Safe Args is strongly recommended for navigating and passing data because it ensures type safety.
     }
